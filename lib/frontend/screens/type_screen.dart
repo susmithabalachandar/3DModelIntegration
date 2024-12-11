@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'herb_details_screen.dart'; // Make sure this import is correct for your project
 
 class TypeScreen extends StatelessWidget {
   const TypeScreen({Key? key}) : super(key: key);
@@ -50,31 +51,76 @@ class TypeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             Expanded(
               child: ListView(
-                children: const [
+                children: [
                   HerbalCard(
-                    title: 'Tulsi',
+                    title: 'Aloe Vera',
                     description: 'Reduces stress and boosts immunity',
                     imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              HerbDetailsScreen(herbName: 'Aloe Vera'),
+                        ),
+                      );
+                    },
                   ),
                   HerbalCard(
                     title: 'Hibiscus',
                     description: 'Lowers blood pressure and cholesterol',
                     imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              HerbDetailsScreen(herbName: 'Neem'),
+                        ),
+                      );
+                    },
                   ),
                   HerbalCard(
                     title: 'Kutki',
                     description: 'Supports liver health and digestion',
                     imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              HerbDetailsScreen(herbName: 'Aloe Vera'),
+                        ),
+                      );
+                    },
                   ),
                   HerbalCard(
                     title: 'Saffron',
                     description: 'Improves mood, memory, and skin health',
                     imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              HerbDetailsScreen(herbName: 'Tulsi'),
+                        ),
+                      );
+                    },
                   ),
                   HerbalCard(
                     title: 'Sarpagandha',
                     description: 'Reduces hypertension and anxiety',
                     imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              HerbDetailsScreen(herbName: 'Tulsi'),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -90,57 +136,62 @@ class HerbalCard extends StatelessWidget {
   final String title;
   final String description;
   final String imagePath;
+  final VoidCallback onTap; // Added onTap for handling navigation
 
   const HerbalCard({
     required this.title,
     required this.description,
     required this.imagePath,
+    required this.onTap, // onTap is required to handle taps
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16.0),
-      height: 150,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        image: DecorationImage(
-          image: AssetImage(imagePath),
-          fit: BoxFit.cover,
-        ),
-      ),
+    return GestureDetector(
+      onTap: onTap, // GestureDetector listens for taps
       child: Container(
-        padding: const EdgeInsets.all(16.0),
+        margin: const EdgeInsets.only(bottom: 16.0),
+        height: 150,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          gradient: LinearGradient(
-            colors: [Colors.black.withOpacity(0.6), Colors.transparent],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
+          image: DecorationImage(
+            image: AssetImage(imagePath),
+            fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            gradient: LinearGradient(
+              colors: [Colors.black.withOpacity(0.6), Colors.transparent],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
             ),
-            const SizedBox(height: 5),
-            Text(
-              description,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 5),
+              Text(
+                description,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

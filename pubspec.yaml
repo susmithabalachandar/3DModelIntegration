@@ -30,6 +30,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: ^2.2.0
+  path_provider: ^2.0.15
+  path: ^1.8.3
+  google_fonts: ^5.0.0
+  convex_bottom_bar: ^3.2.0
+  curved_navigation_bar: ^1.0.3
+  shared_preferences: ^2.0.17
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -91,3 +98,10 @@ flutter:
   assets:
     - lib/frontend/assets/images/home_page_logo.png
     - lib/frontend/assets/images/tulsi.jpeg
+    - lib/frontend/assets/database/greeni.db
+    - lib/frontend/assets/images/aloevera.jpeg
+    - lib/frontend/assets/images/neem.jpeg
+    - lib/frontend/assets/images/ginger.jpeg
+    - lib/frontend/assets/images/turmeric.jpg
+    - lib/frontend/assets/images/peppermint.jpeg
+    - lib/frontend/assets/images/

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'medicinal_uses_screen.dart';
 import 'htype_screen.dart';
 import 'hmedicinalprop_screen.dart';
-import 'region_screen.dart';
-import 'parts_screen.dart';
+import 'hparts_screen.dart';
 import 'endangered_screen.dart';
 import 'growth_screen.dart';
 import 'lifespan_screen.dart';
+import 'hregion_screen.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
@@ -98,14 +98,14 @@ class CategoriesScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const RegionScreen()),
+                                builder: (context) => const HregionScreen()),
                           );
                           break;
                         case 'Parts':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const PartsScreen()),
+                                builder: (context) => const HpartsScreen()),
                           );
                           break;
                         case 'Endangered':

@@ -8,8 +8,8 @@ import 'endangered_screen.dart';
 
 import 'medicinal_uses_screen.dart';
 
-class HtypeScreen extends StatelessWidget {
-  const HtypeScreen({Key? key}) : super(key: key);
+class HpartsScreen extends StatelessWidget {
+  const HpartsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class HtypeScreen extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                'Types',
+                'Categories',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -70,14 +70,14 @@ class HtypeScreen extends StatelessWidget {
                     onTap: () {
                       // Navigate to respective screen based on the tapped category
                       switch (categories[index]['title']) {
-                        case 'Herbs':
+                        case 'Roots':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const TypeScreen()),
                           );
                           break;
-                        case 'Shrubs':
+                        case 'Leaves':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -85,7 +85,7 @@ class HtypeScreen extends StatelessWidget {
                                     const MedicinalUsesScreen()),
                           );
                           break;
-                        case 'Trees':
+                        case 'Bark':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -93,28 +93,48 @@ class HtypeScreen extends StatelessWidget {
                                     const MedicinalpropScreen()),
                           );
                           break;
-                        case 'Aquatic Plants':
+                        case 'Flowers':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const RegionScreen()),
                           );
                           break;
-                        case 'Climbers':
+                        case 'Fruits':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const PartsScreen()),
                           );
                           break;
-                        case 'Vines':
+                        case 'Seeds':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const EndangeredScreen()),
                           );
                           break;
-
+                        case 'Stem':
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const EndangeredScreen()),
+                          );
+                          break;
+                        case 'Sap and Resin':
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const EndangeredScreen()),
+                          );
+                          break;
+                        case 'Rhizomes and Tubers':
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const EndangeredScreen()),
+                          );
+                          break;
                         default:
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -181,13 +201,18 @@ class CategoryCard extends StatelessWidget {
 }
 
 final List<Map<String, String>> categories = [
-  {'title': 'Herbs', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Shrubs', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Trees', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {'title': 'Roots', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {'title': 'Leaves', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {'title': 'Bark', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {'title': 'Flowers', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {'title': 'Seeds', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {'title': 'Stem', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
   {
-    'title': 'Aquatic Plants',
+    'title': 'Sap and Resin',
     'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
   },
-  {'title': 'Climbers', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Vines', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {
+    'title': 'Rhizomes and Tubers',
+    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+  },
 ];

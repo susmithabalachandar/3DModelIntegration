@@ -1,10 +1,58 @@
+
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // Import CategoriesScreen to allow navigation
 import 'package:herbalhub/frontend/screens/categories_screen.dart';
 
-class FrontScreen extends StatelessWidget {
+class FrontScreen extends StatefulWidget {
   const FrontScreen({Key? key}) : super(key: key);
+
+  @override
+  _FrontScreenState createState() => _FrontScreenState();
+}
+
+class _FrontScreenState extends State<FrontScreen> {
+  List<String> bookmarkedPlants = [];
+
+  Future<void> toggleBookmark(String plantTitle, String imagePath) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> savedBookmarks = prefs.getStringList('bookmarkedHerbs') ?? [];
+
+    final plantData = json.encode({'name': plantTitle, 'imagePath': imagePath});
+
+    if (savedBookmarks.contains(plantData)) {
+      savedBookmarks.remove(plantData);
+    } else {
+      savedBookmarks.add(plantData);
+    }
+
+    await prefs.setStringList('bookmarkedHerbs', savedBookmarks);
+    setState(() {
+      bookmarkedPlants = savedBookmarks;
+    });
+  }
+
+  bool isBookmarked(String plantTitle, String imagePath) {
+    final plantData = json.encode({'name': plantTitle, 'imagePath': imagePath});
+    return bookmarkedPlants.contains(plantData);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchBookmarks();
+  }
+
+  Future<void> fetchBookmarks() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      bookmarkedPlants = prefs.getStringList('bookmarkedHerbs') ?? [];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +61,27 @@ class FrontScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFFE7F6D4),
         elevation: 0,
-        title: const Text(
+        title: Text(
           'HerbalHub',
-          style: TextStyle(
+          style: GoogleFonts.lexend(
             color: Colors.black,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.bookmark_outline, color: Colors.black),
+            onPressed: () {
+              // Navigate to Bookmarked Plants Screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BookmarkedPlantsScreen(),
+                ),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.notifications_outlined, color: Colors.black),
             onPressed: () {
@@ -45,6 +105,7 @@ class FrontScreen extends StatelessWidget {
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Search your next herbal discovery...',
+                    hintStyle: GoogleFonts.lexend(color: Colors.green[800]),
                     border: InputBorder.none,
                     prefixIcon: Icon(Icons.search, color: Colors.green[800]),
                     suffixIcon: GestureDetector(
@@ -65,9 +126,9 @@ class FrontScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Top Searches Section
-              const Text(
+              Text(
                 'Top Searches',
-                style: TextStyle(
+                style: GoogleFonts.lexend(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -78,31 +139,23 @@ class FrontScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    PlantCard(
-                      title: 'Tulsi',
-                      imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    ),
-                    PlantCard(
-                      title: 'Hibiscus',
-                      imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    ),
-                    PlantCard(
-                      title: 'Aloe Vera',
-                      imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    ),
-                    PlantCard(
-                      title: 'Lavender',
-                      imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    ),
+                    buildPlantCard(
+                        'Ashwagandha', 'lib/frontend/assets/images/Ashwagandha.jpg'),
+                    buildPlantCard(
+                        'Amla', 'lib/frontend/assets/images/Amla.jpg'),
+                    buildPlantCard(
+                        'Turmeric', 'lib/frontend/assets/images/turmeric.jpg'),
+                    buildPlantCard(
+                        'Fenugreek', 'lib/frontend/assets/images/Fenugreek.jpg'),
                   ],
                 ),
               ),
               const SizedBox(height: 20),
 
               // Recents Section
-              const Text(
+              Text(
                 'Recents',
-                style: TextStyle(
+                style: GoogleFonts.lexend(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -113,95 +166,139 @@ class FrontScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    PlantCard(
-                      title: 'Amla',
-                      imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    ),
-                    PlantCard(
-                      title: 'Fenugreek',
-                      imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    ),
-                    PlantCard(
-                      title: 'Ashwagandha',
-                      imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    ),
-                    PlantCard(
-                      title: 'Brahmi',
-                      imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    ),
+                    buildPlantCard(
+                        'Kutki', 'lib/frontend/assets/images/Kutki.jpg'),
+                    buildPlantCard(
+                        'Aloe Vera', 'lib/frontend/assets/images/aloevera.jpeg'),
+                    buildPlantCard(
+                        'Mexican Mint', 'lib/frontend/assets/images/Mexican_Mint.jpg'),
+                    buildPlantCard(
+                        'Sarpagandha', 'lib/frontend/assets/images/Sarpagandha.jpg'),
                   ],
                 ),
               ),
               const SizedBox(height: 20),
 
               // Suggestions for You Section
-              const Text(
+              Text(
                 'Suggestions for you',
-                style: TextStyle(
+                style: GoogleFonts.lexend(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
               const SizedBox(height: 10),
-              PlantCard(
-                title: 'Jatamansi',
-                imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                width: double.infinity,
-              ),
+              buildPlantCard(
+                  'Jatamansi', 'lib/frontend/assets/images/Jatamansi.jpg',
+                  width: double.infinity),
               const SizedBox(height: 10),
-              PlantCard(
-                title: 'Brahmi',
-                imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                width: double.infinity,
-              ),
+              buildPlantCard('Brahmi', 'lib/frontend/assets/images/Brahmi.jpg',
+                  width: double.infinity),
               const SizedBox(height: 10),
-              PlantCard(
-                title: 'Moringa',
-                imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                width: double.infinity,
-              ),
-              const SizedBox(height: 10),
-              PlantCard(
-                title: 'Ginseng',
-                imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                width: double.infinity,
-              ),
-              const SizedBox(height: 10),
-              PlantCard(
-                title: 'Turmeric',
-                imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                width: double.infinity,
-              ),
+              buildPlantCard('Henna', 'lib/frontend/assets/images/Henna.jpg',
+                  width: double.infinity),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFFE7F6D4),
-        selectedItemColor: Colors.green[800],
-        unselectedItemColor: Colors.green[300],
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.camera_alt_outlined), label: ''),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.local_florist_outlined), label: ''),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart_outlined), label: ''),
-          BottomNavigationBarItem(
-              icon: CircleAvatar(
-                  backgroundImage:
-                      AssetImage('lib/frontend/assets/images/tulsi.jpeg'),
-                  radius: 12),
-              label: ''),
+      bottomNavigationBar: CurvedNavigationBar(
+        color: const Color.fromARGB(255, 27, 69, 29),
+        backgroundColor: const Color(0xFFF0F8EE),
+        animationDuration: const Duration(milliseconds: 300),
+        items: const <Widget>[
+          Icon(Icons.home, color: Colors.white),
+          Icon(Icons.camera_alt_outlined, color: Colors.white),
+          Icon(Icons.local_florist_outlined, color: Colors.white),
+          Icon(Icons.bar_chart_outlined, color: Colors.white),
+          Icon(Icons.person_outline, color: Colors.white),
         ],
+        onTap: (index) {
+          // Handle bottom navigation taps if needed
+        },
+      ),
+    );
+  }
+
+  Widget buildPlantCard(String title, String imagePath, {double width = 150}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0), // Adjust padding around each card
+      child: PlantCard(
+        title: title,
+        imagePath: imagePath,
+        width: width,
       ),
     );
   }
 }
 
-// PlantCard Widget Definition
+class BookmarkedPlantsScreen extends StatefulWidget {
+  const BookmarkedPlantsScreen({Key? key}) : super(key: key);
+
+  @override
+  _BookmarkedPlantsScreenState createState() => _BookmarkedPlantsScreenState();
+}
+
+class _BookmarkedPlantsScreenState extends State<BookmarkedPlantsScreen> {
+  List<Map<String, dynamic>> bookmarkedPlants = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchBookmarkedPlants();
+  }
+
+  Future<void> fetchBookmarkedPlants() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> bookmarkedPlantsJson =
+        prefs.getStringList('bookmarkedHerbs') ?? [];
+
+    setState(() {
+      bookmarkedPlants = bookmarkedPlantsJson
+          .map((e) => Map<String, dynamic>.from(json.decode(e)))
+          .toList();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Bookmarked Plants'),
+        backgroundColor: const Color(0xFFE7F6D4),
+        elevation: 0,
+      ),
+      body: bookmarkedPlants.isEmpty
+          ? const Center(
+              child: Text(
+                'No Bookmarked Plants!',
+                style: TextStyle(fontSize: 18, color: Colors.black54),
+              ),
+            )
+          : ListView.builder(
+              itemCount: bookmarkedPlants.length,
+              itemBuilder: (context, index) {
+                final plant = bookmarkedPlants[index];
+                return ListTile(
+                  leading: plant['imagePath'] != null
+                      ? Image.asset(
+                          plant['imagePath'],
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        )
+                      : null,
+                  title: Text(
+                    plant['name'] ?? 'Unknown Plant',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                );
+              },
+            ),
+    );
+  }
+}
+
 class PlantCard extends StatelessWidget {
   final String title;
   final String imagePath;
@@ -210,7 +307,7 @@ class PlantCard extends StatelessWidget {
   const PlantCard({
     required this.title,
     required this.imagePath,
-    this.width = 150, // Default width for horizontal cards
+    this.width = 150,
     Key? key,
   }) : super(key: key);
 
@@ -239,7 +336,7 @@ class PlantCard extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: const TextStyle(
+          style: GoogleFonts.lexend(
             color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 16,

@@ -4,12 +4,11 @@ import 'type_screen.dart';
 import 'medicinalprop_screen.dart';
 import 'region_screen.dart';
 import 'parts_screen.dart';
-import 'endangered_screen.dart';
 
 import 'medicinal_uses_screen.dart';
 
-class HtypeScreen extends StatelessWidget {
-  const HtypeScreen({Key? key}) : super(key: key);
+class HregionScreen extends StatelessWidget {
+  const HregionScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class HtypeScreen extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                'Types',
+                'Categories',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -70,14 +69,14 @@ class HtypeScreen extends StatelessWidget {
                     onTap: () {
                       // Navigate to respective screen based on the tapped category
                       switch (categories[index]['title']) {
-                        case 'Herbs':
+                        case 'Tropical Regions':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const TypeScreen()),
                           );
                           break;
-                        case 'Shrubs':
+                        case 'Temperate Regions':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -85,7 +84,7 @@ class HtypeScreen extends StatelessWidget {
                                     const MedicinalUsesScreen()),
                           );
                           break;
-                        case 'Trees':
+                        case 'Arid and Desert Regions':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -93,25 +92,18 @@ class HtypeScreen extends StatelessWidget {
                                     const MedicinalpropScreen()),
                           );
                           break;
-                        case 'Aquatic Plants':
+                        case 'Coastal Regions':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const RegionScreen()),
                           );
                           break;
-                        case 'Climbers':
+                        case 'Mountainuous Regions':
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const PartsScreen()),
-                          );
-                          break;
-                        case 'Vines':
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const EndangeredScreen()),
                           );
                           break;
 
@@ -181,13 +173,28 @@ class CategoryCard extends StatelessWidget {
 }
 
 final List<Map<String, String>> categories = [
-  {'title': 'Herbs', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Shrubs', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Trees', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {
+    'title': 'Tropical Regions',
+    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+  },
+  {
+    'title': 'Temperate Regions',
+    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+  },
+  {
+    'title': 'Arid and Desert Regions',
+    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+  },
   {
     'title': 'Aquatic Plants',
     'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
   },
-  {'title': 'Climbers', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Vines', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {
+    'title': 'Coastal Regions',
+    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+  },
+  {
+    'title': 'Mountainous Regions',
+    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+  },
 ];
