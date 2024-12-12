@@ -53,64 +53,36 @@ class TypeScreen extends StatelessWidget {
               child: ListView(
                 children: [
                   HerbalCard(
-                    title: 'Aloe Vera',
-                    description: 'Reduces stress and boosts immunity',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    title: 'Amla',
+                    description: 'Immunity Booster',
+                    imagePath: 'lib/frontend/assets/images/Amla.jpg',
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              HerbDetailsScreen(herbName: 'Aloe Vera'),
+                              HerbDetailsScreen(herbName: 'Amla'),
                         ),
                       );
                     },
                   ),
                   HerbalCard(
-                    title: 'Hibiscus',
-                    description: 'Lowers blood pressure and cholesterol',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    title: 'Ashwagandha',
+                    description: 'Stress Reduction , Energy Booster',
+                    imagePath: 'lib/frontend/assets/images/Ashwagandha.jpg',
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              HerbDetailsScreen(herbName: 'Neem'),
+                              HerbDetailsScreen(herbName: 'Ashwagandha'),
                         ),
                       );
                     },
                   ),
                   HerbalCard(
-                    title: 'Kutki',
-                    description: 'Supports liver health and digestion',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              HerbDetailsScreen(herbName: 'Aloe Vera'),
-                        ),
-                      );
-                    },
-                  ),
-                  HerbalCard(
-                    title: 'Saffron',
-                    description: 'Improves mood, memory, and skin health',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              HerbDetailsScreen(herbName: 'Tulsi'),
-                        ),
-                      );
-                    },
-                  ),
-                  HerbalCard(
-                    title: 'Sarpagandha',
-                    description: 'Reduces hypertension and anxiety',
+                    title: 'Tulsi',
+                    description: 'Memory Enhancer',
                     imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
                     onTap: () {
                       Navigator.push(

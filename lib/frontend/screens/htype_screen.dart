@@ -181,13 +181,10 @@ class CategoryCard extends StatelessWidget {
 }
 
 final List<Map<String, String>> categories = [
-  {'title': 'Herbs', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Shrubs', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Trees', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {
-    'title': 'Aquatic Plants',
-    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
-  },
-  {'title': 'Climbers', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
-  {'title': 'Vines', 'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'},
+  {'title': 'Herbs', 'imagePath': 'lib/frontend/assets/images/herbs.jpg'},
+  {'title': 'Shrubs', 'imagePath': 'lib/frontend/assets/images/shrubs.jpg'},
+  {'title': 'Trees', 'imagePath': 'lib/frontend/assets/images/trees.jpg'},
+  {'title': 'Aquatic Plants', 'imagePath': 'lib/frontend/assets/images/ap.jpg'},
+  {'title': 'Climbers', 'imagePath': 'lib/frontend/assets/images/cli.jpg'},
+  {'title': 'Vines', 'imagePath': 'lib/frontend/assets/images/vines.jpg'},
 ];

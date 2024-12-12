@@ -175,26 +175,22 @@ class CategoryCard extends StatelessWidget {
 final List<Map<String, String>> categories = [
   {
     'title': 'Tropical Regions',
-    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+    'imagePath': 'lib/frontend/assets/images/trreg.jpg'
   },
   {
     'title': 'Temperate Regions',
-    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+    'imagePath': 'lib/frontend/assets/images/tempreg.jpg'
   },
   {
     'title': 'Arid and Desert Regions',
-    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
-  },
-  {
-    'title': 'Aquatic Plants',
-    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+    'imagePath': 'lib/frontend/assets/images/aridreg.jpg'
   },
   {
     'title': 'Coastal Regions',
-    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+    'imagePath': 'lib/frontend/assets/images/coastreg.jpg'
   },
   {
     'title': 'Mountainous Regions',
-    'imagePath': 'lib/frontend/assets/images/tulsi.jpeg'
+    'imagePath': 'lib/frontend/assets/images/mountreg.jpg'
   },
 ];

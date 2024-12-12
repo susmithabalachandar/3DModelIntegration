@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json()); // To parse JSON request bodies
 
 // MongoDB connection string
-const uri = "mongodb://localhost:27017/herbalhub";
+const uri = "mongodb+srv://Susmitha:sus@susmitha.q9dir.mongodb.net/";
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 

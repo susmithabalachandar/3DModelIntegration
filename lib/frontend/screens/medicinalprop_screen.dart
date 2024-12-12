@@ -52,29 +52,19 @@ class MedicinalpropScreen extends StatelessWidget {
               child: ListView(
                 children: const [
                   HerbalCard(
-                    title: 'Tulsi',
-                    description: 'Reduces stress and boosts immunity',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                  ),
-                  HerbalCard(
-                    title: 'Hibiscus',
-                    description: 'Lowers blood pressure and cholesterol',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                  ),
-                  HerbalCard(
-                    title: 'Kutki',
-                    description: 'Supports liver health and digestion',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                  ),
-                  HerbalCard(
-                    title: 'Saffron',
-                    description: 'Improves mood, memory, and skin health',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    title: 'Guggul',
+                    description: 'Anti-Inflammatory',
+                    imagePath: 'lib/frontend/assets/images/guggul.jpg',
                   ),
                   HerbalCard(
                     title: 'Sarpagandha',
-                    description: 'Reduces hypertension and anxiety',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    description: 'Anti-Hyper Tensive',
+                    imagePath: 'lib/frontend/assets/images/Sarpagandha.jpg',
+                  ),
+                  HerbalCard(
+                    title: 'Aloevera',
+                    description: 'Skin Healing',
+                    imagePath: 'lib/frontend/assets/images/alo.jpg',
                   ),
                 ],
               ),

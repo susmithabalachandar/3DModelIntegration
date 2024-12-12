@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'herb_details_screen.dart';
 
 class MedicinalUsesScreen extends StatelessWidget {
   const MedicinalUsesScreen({Key? key}) : super(key: key);
@@ -52,29 +53,19 @@ class MedicinalUsesScreen extends StatelessWidget {
               child: ListView(
                 children: const [
                   HerbalCard(
-                    title: 'Tulsi',
-                    description: 'Reduces stress and boosts immunity',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    title: 'Brahmi',
+                    description: 'Cognitive Function',
+                    imagePath: 'lib/frontend/assets/images/Brahmi.jpg',
                   ),
                   HerbalCard(
-                    title: 'Hibiscus',
-                    description: 'Lowers blood pressure and cholesterol',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    title: 'Shatavari',
+                    description: 'Reproductive Health',
+                    imagePath: 'lib/frontend/assets/images/shat.jpg',
                   ),
                   HerbalCard(
-                    title: 'Kutki',
-                    description: 'Supports liver health and digestion',
-                    imagePath: 'lib/frontend/assets/images/kutki.jpeg',
-                  ),
-                  HerbalCard(
-                    title: 'Saffron',
-                    description: 'Improves mood, memory, and skin health',
-                    imagePath: 'lib/frontend/assets/images/saffron.jpeg',
-                  ),
-                  HerbalCard(
-                    title: 'Sarpagandha',
-                    description: 'Reduces hypertension and anxiety',
-                    imagePath: 'lib/frontend/assets/images/sarpagandha.jpeg',
+                    title: 'Jatamansi',
+                    description: 'Calming effects',
+                    imagePath: 'lib/frontend/assets/images/Jatamansi.jpg',
                   ),
                 ],
               ),

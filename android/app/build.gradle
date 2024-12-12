@@ -31,3 +31,38 @@ android {
         }
     }
 }
+
+
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android" // No version specified here
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.herbalhub"
+    compileSdkVersion 34 // Latest compile SDK version
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId "com.example.herbalhub"
+        minSdkVersion 21
+        targetSdkVersion 34 // Latest target SDK version
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}

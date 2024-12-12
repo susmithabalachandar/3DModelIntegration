@@ -52,29 +52,19 @@ class RegionScreen extends StatelessWidget {
               child: ListView(
                 children: const [
                   HerbalCard(
-                    title: 'Tulsi',
+                    title: 'Noni',
                     description: 'Reduces stress and boosts immunity',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    imagePath: 'lib/frontend/assets/images/noni.jpg',
                   ),
                   HerbalCard(
-                    title: 'Hibiscus',
-                    description: 'Lowers blood pressure and cholesterol',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    title: 'Sea Buckthorn',
+                    description: 'Nutritional Benefits',
+                    imagePath: 'lib/frontend/assets/images/sb.jpg',
                   ),
                   HerbalCard(
-                    title: 'Kutki',
-                    description: 'Supports liver health and digestion',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                  ),
-                  HerbalCard(
-                    title: 'Saffron',
-                    description: 'Improves mood, memory, and skin health',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
-                  ),
-                  HerbalCard(
-                    title: 'Sarpagandha',
-                    description: 'Reduces hypertension and anxiety',
-                    imagePath: 'lib/frontend/assets/images/tulsi.jpeg',
+                    title: 'Coconut',
+                    description: 'Versatile Use',
+                    imagePath: 'lib/frontend/assets/images/coco.jpg',
                   ),
                 ],
               ),
